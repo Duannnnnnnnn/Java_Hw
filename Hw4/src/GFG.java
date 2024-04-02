@@ -15,17 +15,16 @@ class GFG {
         /* if matrix is singular */
         if (singular_flag != -1) {
             System.out.println("Singular Matrix.");
-
+            print(mat, N);
             /*
              * if the RHS of equation corresponding to
              * zero row is 0, * system has infinitely
              * many solutions, else inconsistent
              */
-            if (mat[singular_flag][N] != 0)
+            if (singular_flag >= 0 && mat[singular_flag][N] != 0)
                 System.out.print("Inconsistent System.");
-            else
-                System.out.print(
-                        "May have infinitely many solutions.");
+            else if (singular_flag >= 0)
+                System.out.print("May have infinitely many solutions.");
 
             return;
         }
