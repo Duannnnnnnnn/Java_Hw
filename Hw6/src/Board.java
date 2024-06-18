@@ -6,7 +6,7 @@ public class Board {
     int cross;
     boolean valid = true;
 
-    void init() {
+    public void init() {
         for (int i = 0; i < 9; i++) {
             if (board.charAt(i) == 'O') {
                 circle++;
@@ -27,8 +27,9 @@ public class Board {
                     strike = false;
                 }
             }
-            if (strike = true) {
+            if (strike) {
                 win = true;
+                //System.out.println("b0");
             }
         }
         // col
@@ -39,18 +40,20 @@ public class Board {
                     strike = false;
                 }
             }
-            if (strike = true) {
+            if (strike) {
                 win = true;
+                //System.out.println("b1");
             }
         }
         // \
-        for (int i = 0, j = 0; i < 3; i++) {
+        for (int i = 0; i < 3; i++) {
             boolean strike = true;
-            if (board.charAt(4 * i + j) != c) {
+            if (board.charAt(4 * i) != c) {
                 strike = false;
             }
-            if (strike = true) {
+            if (strike) {
                 win = true;
+                //System.out.println("b2");
             }
         }
         // /
@@ -59,10 +62,12 @@ public class Board {
             if (board.charAt(2 * i + j) != c) {
                 strike = false;
             }
+            if (strike) {
+                win = true;
+                //System.out.println("b3");
+            }
         }
-        if (strike = true) {
-            win = true;
-        }
+
         return win;
     }
 
@@ -71,17 +76,21 @@ public class Board {
         // cross - circle <= 1
         if (circle > cross) {
             valid = false;
+            //System.out.println("c1");
         }
         if (cross - circle > 1) {
             valid = false;
+            //System.out.println("c2");
         }
         // cross win then cross = circle + 1
         if (checkwin('X') && cross != circle + 1) {
             valid = false;
+            //System.out.println("c3");
         }
         // circle win then cross = circle
         if (checkwin('O') && cross != circle) {
             valid = false;
+            // System.out.println("c4");
         }
     }
 }
